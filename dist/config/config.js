@@ -1,14 +1,15 @@
 "use strict";
 
-const fs = require('fs');
+const dotenv = require('dotenv');
 
+dotenv.config();
 module.exports = {
   development: {
     dialect: 'postgres',
-    host: 'localhost',
-    username: 'ldr',
-    password: '1234',
-    database: 'book_api_dev',
+    host: process.env.DB_HOST,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DEV,
     define: {
       timestamps: true,
       underscored: true
@@ -16,10 +17,10 @@ module.exports = {
   },
   test: {
     dialect: 'postgres',
-    host: 'localhost',
-    username: 'ldr',
-    password: '1234',
-    database: 'book_api_test',
+    host: process.env.DB_HOST,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_TEST,
     define: {
       timestamps: true,
       underscored: true
@@ -27,10 +28,10 @@ module.exports = {
   },
   production: {
     dialect: 'postgres',
-    host: 'localhost',
-    username: 'ldr',
-    password: '1234',
-    database: 'book_api_production',
+    host: process.env.DB_HOST,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_PROD,
     define: {
       timestamps: true,
       underscored: true
