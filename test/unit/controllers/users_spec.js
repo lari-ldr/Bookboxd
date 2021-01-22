@@ -3,7 +3,7 @@ import User from '../../../src/models/User';
 import sinon from 'sinon';
 import { expect } from 'chai';
 
-describe('CONTROLLERS: BOOKS', ()=>{
+describe('CONTROLLERS: USERS', ()=>{
 
     const defaultUser = [{
         first_name: "Julia",
