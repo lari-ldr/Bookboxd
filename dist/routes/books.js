@@ -9,16 +9,14 @@ var _express = _interopRequireDefault(require("express"));
 
 var _Books = _interopRequireDefault(require("../controllers/Books"));
 
-var _models = require("../models");
+var _Book = _interopRequireDefault(require("../models/Book"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // responsável por carregar todas as rotas da aplicação
-// import Book from '../models/Book';
-// const Book = require('../models').Book;
 const router = _express.default.Router();
 
-const newBooksController = new _Books.default(_models.Book);
+const newBooksController = new _Books.default(_Book.default);
 router.get('/', (req, res) => newBooksController.getAll(req, res));
 router.get('/:id', (req, res) => newBooksController.getById(req, res));
 router.post('/', (req, res) => newBooksController.store(req, res));

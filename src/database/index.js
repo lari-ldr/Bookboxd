@@ -1,43 +1,30 @@
 'use strict';
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const basename = path.basename(module.filename);
-const env = process.env.NODE_ENV || 'development' || 'test';
-const config = require(`${__dirname}/../config/config.js`)[env];
+import Sequelize from 'sequelize';
+import dbConfig from '../config/config';
+import dotenv from 'dotenv';
+import Book from '../models/Book';
+import User from '../models/User';
+import Review from '../models/Review';
+import List from '../models/List';
 
-const db = {};
-const databases = Object.keys(config.databases);
-for(let i = 0; i < databases.length; i++){
-  let database = databases[i];
-  let dbPath = config.databases[database];
+dotenv.config();
+const connection = new Sequelize(dbConfig);
 
-  db[database] = new Sequelize(dbPath.database, dbPath.username, dbPath.password, dbPath);
-};
+Book.init(connection);
+User.init(connection);
+Review.init(connection);
+List.init(connection);
 
-fs
-  .readdirSync(__dirname + '/../models/dbDev')
-  .filter(file =>
-    (file.indexOf('.') !== 0) &&
-    (file !== basename) &&
-    (file.slice(-3) === '.js'))
-    .forEach(file => {
-      const model = db.DbDev.import(path.join(__dirname + '/../models/dbDev', file));
-      db[model.name] = model;
-    });
+Book.associate(connection.models);
+User.associate(connection.models);
+Review.associate(connection.models);
+List.associate(connection.models);
 
-fs
-  .readdirSync(__dirname + '/../models/dbTest')
-  .filter(file =>
-    (file.indexOf('.') !== 0) &&
-    (file !== basename) &&
-    (file.slice(-3) === '.js'))
-  .forEach(file => {
-    const model = db.DbTest.import(path.join(__dirname + '/../models/dbTest', file));
-    db[model.name] = model;
-  });
+export default connection;
 
-  module.exports = db;
+// =====================================================================
+// =====================================================================
+// =====================================================================
 // 'use strict';
 // const dotenv = require('dotenv');
 // dotenv.config();

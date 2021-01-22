@@ -1,35 +1,51 @@
 'use strict';
 
-const fs = require('fs');
-
-const path = require('path');
-
-const Sequelize = require('sequelize');
-
-const basename = path.basename(module.filename);
-const env = process.env.NODE_ENV || 'development' || 'test';
-
-const config = require(`${__dirname}/../config/config.js`)[env];
-
-const db = {};
-const databases = Object.keys(config.databases);
-
-for (let i = 0; i < databases.length; i++) {
-  let database = databases[i];
-  let dbPath = config.databases[database];
-  db[database] = new Sequelize(dbPath.database, dbPath.username, dbPath.password, dbPath);
-}
-
-;
-fs.readdirSync(__dirname + '/../models/dbDev').filter(file => file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js').forEach(file => {
-  const model = db.DbDev.import(path.join(__dirname + '/../models/dbDev', file));
-  db[model.name] = model;
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-fs.readdirSync(__dirname + '/../models/dbTest').filter(file => file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js').forEach(file => {
-  const model = db.DbTest.import(path.join(__dirname + '/../models/dbTest', file));
-  db[model.name] = model;
-});
-module.exports = db; // 'use strict';
+exports.default = void 0;
+
+var _sequelize = _interopRequireDefault(require("sequelize"));
+
+var _config = _interopRequireDefault(require("../config/config"));
+
+var _dotenv = _interopRequireDefault(require("dotenv"));
+
+var _Book = _interopRequireDefault(require("../models/Book"));
+
+var _User = _interopRequireDefault(require("../models/User"));
+
+var _Review = _interopRequireDefault(require("../models/Review"));
+
+var _List = _interopRequireDefault(require("../models/List"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_dotenv.default.config();
+
+const connection = new _sequelize.default(_config.default);
+
+_Book.default.init(connection);
+
+_User.default.init(connection);
+
+_Review.default.init(connection);
+
+_List.default.init(connection);
+
+_Book.default.associate(connection.models);
+
+_User.default.associate(connection.models);
+
+_Review.default.associate(connection.models);
+
+_List.default.associate(connection.models);
+
+console.log('connection', connection);
+var _default = connection; // =====================================================================
+// =====================================================================
+// =====================================================================
+// 'use strict';
 // const dotenv = require('dotenv');
 // dotenv.config();
 // const fs = require('fs');
@@ -67,3 +83,5 @@ module.exports = db; // 'use strict';
 // // db.Sequelize = Sequelize;
 // // module.exports = db;
 // module.exports = sequelize;
+
+exports.default = _default;
