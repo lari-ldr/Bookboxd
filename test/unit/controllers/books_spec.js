@@ -1,4 +1,4 @@
-import BooksController from '../../../src/controllers/books';
+import BooksController from '../../../src/controllers/Books';
 import Book from '../../../src/models/Book';
 import sinon from 'sinon';
 import { expect } from 'chai';
