@@ -34,7 +34,7 @@ describe('CONTROLLERS: BOOKS', ()=>{
             const request = {};
             const response = {
                 send: sinon.spy(),
-                status: sinon.stub()
+                status: sinon.stub().returnsThis()
             };
             response.status.withArgs(400).returns(response);
             Book.findAll = sinon.stub();
@@ -80,7 +80,7 @@ describe('CONTROLLERS: BOOKS', ()=>{
 
             const response = {
                 send: sinon.spy(),
-                status: sinon.stub()
+                status: sinon.stub().returnsThis()
             };
 
             Book.create = sinon.stub();
@@ -100,7 +100,7 @@ describe('CONTROLLERS: BOOKS', ()=>{
             it('should return 422', async ()=>{
                 const response = {
                     send: sinon.spy(),
-                    status: sinon.stub()
+                    status: sinon.stub().returnsThis()
                   };
 
                   Book.create = sinon.stub();
@@ -172,7 +172,7 @@ describe('CONTROLLERS: BOOKS', ()=>{
 
                 const response = {
                     send: sinon.spy(),
-                    status: sinon.stub()
+                    status: sinon.stub().returnsThis()
                     };                    
 
                 Book.update = sinon.stub();
