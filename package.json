@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "go": "node src/server.js",
+    "gon": "nodemon src/server.js",
     "build": "babel src --out-dir dist",
     "start": "npm run build && node dist/server.js",
     "start:dev": "babel-node src/server.js",
