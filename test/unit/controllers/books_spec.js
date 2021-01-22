@@ -1,7 +1,7 @@
-import BooksController from '../../../src/controllers/books';
-import Book from '../../../src/models/Book';
-import sinon from 'sinon';
-import { expect } from 'chai';
+const BooksController = require('../../../src/controllers/books');
+const Book = require('../../../src/models/Book');
+const sinon = require('sinon');
+const { expect } = require('chai');
 
 describe('CONTROLLERS: BOOKS', ()=>{
 

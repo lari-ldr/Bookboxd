@@ -1,4 +1,4 @@
-import {Model, DataTypes} from 'sequelize';
+const {Model, DataTypes} = requre('sequelize');
 
 class List extends Model{
     static init(connection){
@@ -15,4 +15,4 @@ class List extends Model{
     }
 }
 
-export default List;
+module.exports = List;

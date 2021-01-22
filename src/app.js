@@ -1,10 +1,10 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import routes from './routes';
-import chalk from 'chalk';
+const express = require('express');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const routes = require('./routes');
+const chalk = require('chalk');
 
-import database from './database';
+const database = require('./database');
 
 const app = express();
 
@@ -19,7 +19,7 @@ const configureExpress = ()=>{
 }
 
 
-export default async () =>{
+module.exports = async () =>{
     const app = configureExpress();
     await app.database.authenticate();
     console.info(chalk.green('PSQL database connection successfully made it!'));

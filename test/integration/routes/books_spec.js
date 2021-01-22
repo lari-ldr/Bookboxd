@@ -1,6 +1,6 @@
-import { expect } from "chai";
-import supertest from "supertest";
-import Book from "../../../src/models/Book";
+const { expect } = require("chai");
+const supertest = require("supertest");
+const Book = require("../../../src/models/Book");
 
 describe('ROUTE: Books', ()=>{
     const anotherBook = {

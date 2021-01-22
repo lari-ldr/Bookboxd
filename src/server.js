@@ -1,5 +1,5 @@
-import setupApp from './app';
-import chalk from 'chalk';
+const setupApp = require('./app');
+const chalk = require('chalk');
 const port = 3333;
 
 const exitStatus = {
