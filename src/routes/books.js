@@ -1,8 +1,8 @@
 // responsável por carregar todas as rotas da aplicação
 import express from 'express';
 import BooksController from '../controllers/Books';
-import Book from '../models/Book';
-
+// import Book from '../models/Book';
+const Book = require('../models').Book;
 
 const router = express.Router();
 
