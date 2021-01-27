@@ -1,7 +1,7 @@
 before(async () => {
-    const app = await setupApp();
-    global.app = app;
-    global.request = supertest(app);
-  });
+  const app = await setupApp();
+  global.app = app;
+  global.request = supertest(app);
+});
 
-after( async ()=> await app.database.close());
+after(async () => await app.database.close());

@@ -8,21 +8,20 @@ import database from './database';
 
 const app = express();
 
-const configureExpress = ()=>{
-    dotenv.config();
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.database = database;
-    app.use('/', routes);
+const configureExpress = () => {
+  dotenv.config();
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.database = database;
+  app.use('/', routes);
 
-    return app;
-}
+  return app;
+};
 
+export default async () => {
+  const app = configureExpress();
+  await app.database.authenticate();
+  console.info(chalk.green('PSQL database connection successfully made it!'));
 
-export default async () =>{
-    const app = configureExpress();
-    await app.database.authenticate();
-    console.info(chalk.green('PSQL database connection successfully made it!'));
-
-    return app;
-}
+  return app;
+};

@@ -31,6 +31,11 @@ class User extends _sequelize.Model {
       as: 'lists',
       onDelete: 'CASCADE'
     });
+    this.hasMany(models.Review, {
+      foreignKey: 'user_id',
+      as: 'reviews',
+      onDelete: 'CASCADE'
+    });
   }
 
 }

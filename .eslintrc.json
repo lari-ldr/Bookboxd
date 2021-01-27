@@ -1,0 +1,35 @@
+{
+  "env": {
+    "mocha": true,
+    "node": true,
+    "es2021": true,
+    "es6": true
+  },
+  "extends": ["eslint: recommended", "airbnb-base", "prettier", "prettier/babel", "prettier/node"],
+  "plugins": ["node/recommended", "prettier"],
+  "parser": "babel-eslint",
+  "globals": {
+    "expect": true,
+    "request": true,
+    "setupApp": true,
+    "supertest": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "node/no-unsupported-features/es-syntax": [
+      "error",
+    {
+      "version": ">=8.0.0",
+      "ignores": [
+        "modules"
+      ]
+    }
+    ],
+    "no-console": "off",
+    "no-process-exit": "off"
+  }
+}
