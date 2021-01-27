@@ -41,7 +41,6 @@ _Review.default.associate(connection.models);
 
 _List.default.associate(connection.models);
 
-console.log('connection', connection);
 var _default = connection; // =====================================================================
 // =====================================================================
 // =====================================================================
